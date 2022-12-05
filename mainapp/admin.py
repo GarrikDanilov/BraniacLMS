@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainapp.models import News, Course, Lesson, CourseTeachers
+from mainapp.models import News, Course, Lesson, CourseTeachers, CourseFeedback
 
 
 admin.site.register(Course)
@@ -51,3 +51,18 @@ class LessonAdmin(admin.ModelAdmin):
         return obj.course.name
     
     get_course_name.short_description = "Курс"
+
+
+@admin.register(CourseFeedback)
+class CourseFeedbackAdmin(admin.ModelAdmin):
+    list_display = ["pk", "get_course_name", "get_username", "created"]
+
+    def get_course_name(self, obj):
+        return obj.course.name
+    
+    get_course_name.short_description = "Курс"
+
+    def get_username(self, obj):
+        return obj.user.username
+    
+    get_username.short_description = "Пользователь"

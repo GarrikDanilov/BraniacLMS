@@ -8,10 +8,11 @@
     
     <div class="card my-2">
       <div class="card-body">
-        <h5 class="card-title">{{ news_object.title }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ news_object.created|date:"Y-m-d h-i-s" }}</h6>
-        <p class="card-text">{{ news_object.preamble }}</p>
-        <p class="card-text">{{ news_object.body }}</p>
+        <h5 class="card-title">{{ object.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ object.created|date:"Y-m-d h-i-s" }}</h6>
+        <p class="card-text">{{ object.preamble }}</p>
+        <p class="card-text">{{ object.body }}</p>
+        <a href="{% url 'mainapp:news' %}" class="btn btn-primary">Назад</a>
       </div>
     </div>
     
