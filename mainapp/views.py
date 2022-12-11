@@ -1,17 +1,53 @@
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, DetailView, CreateView, DeleteView, View
 from mainapp.models import News, Course, Lesson, CourseTeachers, CourseFeedback
 from django.template.loader import render_to_string
-from django.http import JsonResponse, FileResponse
-from mainapp.forms import CourseFeedbackForm
+from django.http import JsonResponse, FileResponse, HttpResponseRedirect
+from django.utils.translation import gettext_lazy as _
+from mainapp.forms import CourseFeedbackForm, MailFeedbackForm
 from django.core.cache import cache
 from config.settings import LOG_FILE
+from mainapp.tasks import send_feedback_mail
 
 
 class ContactsView(TemplateView):
     template_name = 'mainapp/contacts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactsView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            context["form"] = MailFeedbackForm(user=self.request.user)
+        return context
+
+    def post(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            cache_lock_flag = cache.get(
+             f"mail_feedback_lock_{self.request.user.pk}"
+            )
+        if not cache_lock_flag:
+            cache.set(
+             f"mail_feedback_lock_{self.request.user.pk}",
+             "lock", timeout=300,
+            )
+            messages.add_message(
+             self.request, messages.INFO, _("Message sended")
+            )
+            send_feedback_mail.delay(
+             {
+                "user_id": self.request.POST.get("user_id"),
+                "message": self.request.POST.get("message"),
+             }
+            )
+        else:
+            messages.add_message(
+             self.request,
+             messages.WARNING,
+             _("You can send only one message per 5 minutes"),
+            )
+        return HttpResponseRedirect(reverse_lazy("mainapp:contacts"))
 
 
 class CoursesListView(ListView):
