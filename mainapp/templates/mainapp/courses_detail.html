@@ -1,5 +1,5 @@
 {% extends 'mainapp/base.html' %}
-{% load static crispy_forms_tags %}
+{% load static markdownify crispy_forms_tags cache %}
 {% block title %}
 {{ course_object.name }}
 {% endblock title %}
@@ -12,7 +12,7 @@
         <div class="row h-100">
             <div class="col-12">
                 {% if course_object.description_as_markdown %}
-                
+                {{ course_object.description|markdownify }}
                 {% else %}
                 {{ course_object.description }}
                 {% endif %}
@@ -57,6 +57,7 @@
     </div>
 </div>
 <div class="accordion" id="accordionLessons">
+    {% cache 300 lessons %}
     {% for item in lessons %}
     <div class="card">
         <div class="card-header" id="headLessonPk{{ item.pk }}">
@@ -79,7 +80,7 @@
                     </div>
                     <div class="col-12">
                         {% if item.description_as_markdown %}
-                       
+                        {{ item.description|markdownify }}
                         {% else %}
                         {{ item.description }}
                         {% endif %}
@@ -89,6 +90,7 @@
         </div>
     </div>
     {% endfor %}
+    {% endcache %}
 </div>
 <h3>Отзывы</h3>
 <div id="feedback_list">
