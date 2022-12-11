@@ -19,5 +19,6 @@ urlpatterns = [
     path('news/<int:pk>/delete', views.NewsDeleteView.as_view(), name="news_delete"),
     path('courses/<int:pk>/detail', views.CoursesDetailView.as_view(), name="courses_detail"),
     path('courses/feedback', views.CourseFeedbackFormProcessView.as_view(), name="course_feedback"),
-
+    path('logs/', views.LogView.as_view(), name='logs_list'),
+    path('logs_download/', views.LogDownloadView.as_view(), name='logs_download'),
 ]

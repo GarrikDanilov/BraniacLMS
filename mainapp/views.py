@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, UpdateView, DetailView, CreateView, DeleteView
+from django.views.generic import TemplateView, ListView, UpdateView, DetailView, CreateView, DeleteView, View
 from mainapp.models import News, Course, Lesson, CourseTeachers, CourseFeedback
 from django.template.loader import render_to_string
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from mainapp.forms import CourseFeedbackForm
+from config.settings import LOG_FILE
 
 
 class ContactsView(TemplateView):
@@ -100,3 +101,32 @@ class CourseFeedbackFormProcessView(LoginRequiredMixin, CreateView):
         rendered_card = render_to_string(
          "mainapp/includes/inc_feedback_card.html", context={"item": self.object})
         return JsonResponse({"card": rendered_card})
+
+
+class LogView(UserPassesTestMixin, TemplateView):
+    template_name = 'mainapp/logs.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        log_lines = []
+
+        with open(LOG_FILE) as file_logs:
+            for idx, line in enumerate(file_logs):
+                if idx == 1000:
+                    break
+                log_lines.insert(0, line)
+
+            context_data['logs'] = ''.join(log_lines)
+        return context_data
+
+
+class LogDownloadView(UserPassesTestMixin, View):
+    
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get(self, *args, **kwargs):
+        return FileResponse(open(LOG_FILE, 'rb'))
