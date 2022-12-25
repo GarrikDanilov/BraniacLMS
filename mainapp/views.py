@@ -130,7 +130,7 @@ class CoursesDetailView(TemplateView):
 
             # Archive object for tests --->
             # import pickle
-            # with open(f"mainapp/fixtures/004_feedback_list_{pk}.bin", "wb") as outf:
+            # with open(f"mainapp/fixtures/001_feedback_list_{pk}.bin", "wb") as outf:
             #    pickle.dump(context["feedback_list"], outf)
             # <--- Archive object for tests
         else:
