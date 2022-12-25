@@ -1,0 +1,58 @@
+[
+{
+  "model": "mainapp.course",
+  "pk": 1,
+  "fields": {
+    "name": "Курс 1",
+    "description": "Описание курса 1",
+    "cost": "2000.00",
+    "description_as_markdown": false,
+    "cover": "img/course001.jpg",
+    "created": "2022-12-03T21:53:38.676Z",
+    "updated": "2022-12-05T00:24:56.009Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.course",
+  "pk": 2,
+  "fields": {
+    "name": "Курс 2",
+    "description": "Описание курса 2",
+    "cost": "3000.00",
+    "description_as_markdown": false,
+    "cover": "img/course002.jpg",
+    "created": "2022-12-03T21:54:07.650Z",
+    "updated": "2022-12-05T00:25:14.553Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.course",
+  "pk": 3,
+  "fields": {
+    "name": "Курс 3",
+    "description": "Описание курса",
+    "cost": "2000.00",
+    "description_as_markdown": false,
+    "cover": "img/course003.jpg",
+    "created": "2022-12-11T18:58:22.850Z",
+    "updated": "2022-12-11T18:59:38.306Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.course",
+  "pk": 4,
+  "fields": {
+    "name": "Курс 4",
+    "description": "Описание курса",
+    "cost": "5000.00",
+    "description_as_markdown": false,
+    "cover": "img/course004.jpg",
+    "created": "2022-12-11T18:59:25.380Z",
+    "updated": "2022-12-11T18:59:25.380Z",
+    "deleted": false
+  }
+}
+]
