@@ -1,0 +1,80 @@
+[
+{
+  "model": "mainapp.news",
+  "pk": 1,
+  "fields": {
+    "title": "News1",
+    "preamble": "news in shell",
+    "body": "Содержимое новости 1",
+    "body_as_markdown": false,
+    "created": "2022-11-11T00:09:00.203Z",
+    "updated": "2022-12-04T21:40:26.911Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.news",
+  "pk": 2,
+  "fields": {
+    "title": "News2",
+    "preamble": "news in fixtures",
+    "body": "Содержимое новости 2",
+    "body_as_markdown": false,
+    "created": "2022-11-11T00:09:00.203Z",
+    "updated": "2022-12-04T21:40:43.044Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.news",
+  "pk": 3,
+  "fields": {
+    "title": "News3",
+    "preamble": "news in fixtures",
+    "body": "Содержимое новости 3",
+    "body_as_markdown": false,
+    "created": "2022-11-11T00:09:00.203Z",
+    "updated": "2022-12-04T21:40:56.557Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.news",
+  "pk": 4,
+  "fields": {
+    "title": "News4",
+    "preamble": "news in fixtures",
+    "body": "Содержимое новости 4",
+    "body_as_markdown": false,
+    "created": "2022-11-11T00:09:00.203Z",
+    "updated": "2022-12-04T21:41:06.651Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.news",
+  "pk": 5,
+  "fields": {
+    "title": "News5",
+    "preamble": "news in fixtures",
+    "body": "Содержимое новости 5",
+    "body_as_markdown": false,
+    "created": "2022-11-11T00:09:00.203Z",
+    "updated": "2022-12-04T22:48:12.718Z",
+    "deleted": true
+  }
+},
+{
+  "model": "mainapp.news",
+  "pk": 6,
+  "fields": {
+    "title": "Новость 6",
+    "preamble": "урок 6",
+    "body": "Содержимое новости 6",
+    "body_as_markdown": false,
+    "created": "2022-12-04T22:47:47.267Z",
+    "updated": "2022-12-04T22:47:47.267Z",
+    "deleted": false
+  }
+}
+]

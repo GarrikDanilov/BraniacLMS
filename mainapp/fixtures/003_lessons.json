@@ -1,0 +1,72 @@
+[
+{
+  "model": "mainapp.lesson",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "num": 1,
+    "title": "Урок 1",
+    "description": "Описание урока 1 к первому курсу",
+    "description_as_markdown": false,
+    "created": "2022-12-03T21:55:06.387Z",
+    "updated": "2022-12-03T21:55:06.388Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.lesson",
+  "pk": 2,
+  "fields": {
+    "course": 1,
+    "num": 2,
+    "title": "Урок 2",
+    "description": "Описание урока 2 к первому курсу",
+    "description_as_markdown": false,
+    "created": "2022-12-03T21:55:54.654Z",
+    "updated": "2022-12-03T21:55:54.654Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.lesson",
+  "pk": 3,
+  "fields": {
+    "course": 1,
+    "num": 3,
+    "title": "Урок 3",
+    "description": "Описание урока 3 к первому курсу",
+    "description_as_markdown": false,
+    "created": "2022-12-03T21:56:16.594Z",
+    "updated": "2022-12-03T22:46:42.702Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.lesson",
+  "pk": 4,
+  "fields": {
+    "course": 2,
+    "num": 1,
+    "title": "Урок 1",
+    "description": "Описание урока 1 ко второму курсу",
+    "description_as_markdown": false,
+    "created": "2022-12-03T21:56:46.018Z",
+    "updated": "2022-12-03T22:47:03.122Z",
+    "deleted": false
+  }
+},
+{
+  "model": "mainapp.lesson",
+  "pk": 5,
+  "fields": {
+    "course": 2,
+    "num": 2,
+    "title": "Урок 2",
+    "description": "Описание урока 2 ко второму курсу",
+    "description_as_markdown": false,
+    "created": "2022-12-03T21:57:24.805Z",
+    "updated": "2022-12-03T21:57:24.805Z",
+    "deleted": false
+  }
+}
+]
